@@ -26,9 +26,9 @@ The pipeline follows the **Medallion architecture** (Bronze → Silver → Gold)
 
 ## 📥 Data Sources
 
-- **`movie_metadata.csv`** — a Kaggle dataset (title, duration, budget, IMDb score, …). Included in [`data/`](data/).
-- **[OMDb API](https://www.omdbapi.com/)** — queried in a Python loop to enrich each film with its **director**.
-- **Simulated user ratings** — generated from real IMDb IDs so the fact-table relationships are valid and realistic.
+- **`movie_metadata.csv`** - a Kaggle dataset (title, duration, budget, IMDb score, …). Included in [`data/`](data/).
+- **[OMDb API](https://www.omdbapi.com/)** - queried in a Python loop to enrich each film with its **director**.
+- **Simulated user ratings** - generated from real IMDb IDs so the fact-table relationships are valid and realistic.
 
 ---
 
@@ -66,14 +66,14 @@ Fabric Lakehouse · PySpark · Delta tables · OMDb API · pandas · Power BI
    import os
    os.environ["OMDB_API_KEY"] = "your_free_key_from_omdbapi.com"
    ```
-4. Run the notebook top to bottom — it builds every Bronze/Silver/Gold table.
+4. Run the notebook top to bottom - it builds every Bronze/Silver/Gold table.
 5. Build the Power BI model on top of the Gold tables.
 
 ---
 
 ## 💻 Run it locally (no Fabric needed)
 
-The Fabric notebook runs inside a Fabric workspace — so this repo also ships a **dependency-light local reproduction** of the exact same Bronze → Silver → Gold logic in pandas, runnable by anyone:
+The Fabric notebook runs inside a Fabric workspace - so this repo also ships a **dependency-light local reproduction** of the exact same Bronze → Silver → Gold logic in pandas, runnable by anyone:
 
 ```bash
 pip install pandas matplotlib
@@ -93,12 +93,12 @@ streamlit run local/app.py
 
 ## 💡 Key insights (from the local pipeline, ~4,900 films)
 
-- 💸 **Money doesn't buy ratings.** Budget correlates with IMDb score at just **0.03** — essentially zero. What *does* track with rating: number of votes (**0.43**), runtime (**0.34**) and gross (**0.20**).
+- 💸 **Money doesn't buy ratings.** Budget correlates with IMDb score at just **0.03** - essentially zero. What *does* track with rating: number of votes (**0.43**), runtime (**0.34**) and gross (**0.20**).
 - 🎭 **Genre matters.** **Documentary** is the highest-rated genre (avg **7.19**), while **Horror** sits lowest (**5.82**).
 - 🎬 **Directors that consistently deliver** (≥5 films): **Christopher Nolan** tops the list at **8.43** avg.
 - 📈 The pipeline also outputs rating-by-decade and a top-20 films table (with a minimum-votes threshold to filter noise).
 
-> Note: very early decades (1910s–20s) show high averages off a handful of films — a small-sample effect, not a golden age.
+> Note: very early decades (1910s-20s) show high averages off a handful of films - a small-sample effect, not a golden age.
 
 ![Average IMDb score by genre](assets/rating_by_genre.png)
 
