@@ -82,6 +82,13 @@ python local/pipeline.py
 
 It reads [`data/movie_metadata.csv`](data/movie_metadata.csv), rebuilds the medallion layers, and writes the Gold tables to [`local/gold/`](local/gold/) plus charts to `assets/`.
 
+There's also an interactive dashboard over the Gold tables:
+
+```bash
+pip install streamlit plotly pandas
+streamlit run local/app.py
+```
+
 ---
 
 ## 💡 Key insights (from the local pipeline, ~4,900 films)
